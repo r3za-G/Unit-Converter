@@ -323,13 +323,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-
 
 struct AdaptsToKeyboard: ViewModifier {
     @State var currentHeight: CGFloat = 0
@@ -337,7 +330,7 @@ struct AdaptsToKeyboard: ViewModifier {
     func body(content: Content) -> some View {
         GeometryReader { geometry in
             content
-                .padding(.bottom, self.currentHeight)
+                .padding(.bottom, 0.0)
                 .onAppear(perform: {
                     NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillShowNotification)
                         .merge(with: NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillChangeFrameNotification))
